@@ -1,13 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>Smart Water Monitoring</title>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -23,6 +26,7 @@ body {
 }
 
 /* PHONE */
+
 .phone {
     width: 100%;
     max-width: 390px;
@@ -34,6 +38,7 @@ body {
 }
 
 /* HEADER */
+
 .header {
     height: 145px;
     background: linear-gradient(145deg, #1746c7, #1237a8);
@@ -65,12 +70,14 @@ body {
 }
 
 /* CONTENT */
+
 .content {
     padding: 18px 15px 100px;
     margin-top: -2px;
 }
 
 /* MAIN WATER CARD */
+
 .water-card {
     background: white;
     border-radius: 17px;
@@ -87,6 +94,7 @@ body {
 }
 
 /* WATER SECTION */
+
 .water-main {
     display: flex;
     align-items: center;
@@ -100,6 +108,7 @@ body {
 }
 
 /* CIRCLE */
+
 .circle {
     width: 122px;
     height: 122px;
@@ -109,13 +118,15 @@ body {
 
     background:
         conic-gradient(
-            #1250d5 0deg 280.8deg,
-            #dce5ed 280.8deg 360deg
+            #1250d5 0deg 0deg,
+            #dce5ed 0deg 360deg
         );
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: background 0.5s ease;
 }
 
 .circle::before {
@@ -154,6 +165,7 @@ body {
 }
 
 /* TANK */
+
 .tank-container {
     width: 48%;
     display: flex;
@@ -167,15 +179,18 @@ body {
     border-radius: 17px 17px 13px 13px;
     position: relative;
     overflow: hidden;
+
     background: linear-gradient(
         to right,
         rgba(220,235,255,.5),
         rgba(255,255,255,.7)
     );
+
     box-shadow: inset 4px 0 10px rgba(255,255,255,.8);
 }
 
-/* tank top */
+/* TANK TOP */
+
 .tank::before {
     content: "";
     position: absolute;
@@ -189,18 +204,24 @@ body {
 }
 
 /* WATER */
+
 .tank-water {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 78%;
+
+    height: 0%;
+
     background: linear-gradient(
         180deg,
         #1ca9ed,
         #007ee5
     );
+
     opacity: .9;
+
+    transition: height 0.7s ease;
 }
 
 .tank-water::before {
@@ -215,6 +236,7 @@ body {
 }
 
 /* TANK BASE */
+
 .tank-base {
     position: absolute;
     width: 100px;
@@ -239,6 +261,7 @@ body {
 }
 
 /* STATUS GRID */
+
 .status-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -294,12 +317,17 @@ body {
     background: #ed5360;
 }
 
+.yellow {
+    background: #f5b942;
+}
+
 .status-small {
     font-size: 9px;
     color: #555;
 }
 
 /* MANUAL CONTROL */
+
 .control-title {
     text-align: center;
     color: #1450c4;
@@ -338,6 +366,7 @@ button:active {
 }
 
 /* NAVIGATION */
+
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -370,7 +399,9 @@ button:active {
 }
 
 /* IPHONE SAFE AREA */
+
 @supports (padding: env(safe-area-inset-bottom)) {
+
     .bottom-nav {
         height: calc(74px + env(safe-area-inset-bottom));
         padding-bottom: env(safe-area-inset-bottom);
@@ -379,195 +410,143 @@ button:active {
     .content {
         padding-bottom: calc(100px + env(safe-area-inset-bottom));
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="phone">
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="bell">♧</div>
+```
+<!-- HEADER -->
 
-        <h1>SMART WATER<br>MONITORING</h1>
+<header class="header">
 
-        <p>Real-Time Water Tank Monitoring</p>
-    </header>
+    <div class="bell">♧</div>
 
+    <h1>
+        SMART WATER<br>
+        MONITORING
+    </h1>
 
-    <main class="content">
+    <p>
+        Real-Time Water Tank Monitoring
+    </p>
 
-        <!-- WATER LEVEL -->
-        <section class="water-card">
-
-            <div class="water-title">
-                WATER LEVEL
-            </div>
-
-            <div class="water-main">
-
-                <div class="level-container">
-
-                    <div class="circle">
-
-                        <div class="level-text">
-                            <span
-                                class="level-number"
-                                id="levelNumber">
-                                78%
-                            </span>
-
-                            <span class="level-label">
-                                Water Level
-                            </span>
-                        </div>
-
-                    </div>
-
-                    <div class="level-value">
-                        37.4 cm
-                    </div>
-
-                </div>
+</header>
 
 
-                <div class="tank-container">
+<main class="content">
 
-                    <div class="tank">
+    <!-- WATER LEVEL -->
 
-                        <div
-                            class="tank-water"
-                            id="tankWater">
-                        </div>
+    <section class="water-card">
 
-                        <div class="tank-stand"></div>
-                        <div class="tank-stand right"></div>
-                        <div class="tank-base"></div>
+        <div class="water-title">
+            WATER LEVEL
+        </div>
+
+        <div class="water-main">
+
+            <div class="level-container">
+
+                <div
+                    class="circle"
+                    id="levelCircle">
+
+                    <div class="level-text">
+
+                        <span
+                            class="level-number"
+                            id="levelNumber">
+
+                            0%
+
+                        </span>
+
+                        <span class="level-label">
+                            Water Level
+                        </span>
 
                     </div>
 
                 </div>
 
-            </div>
-        </section>
 
+                <div
+                    class="level-value"
+                    id="distanceValue">
 
-        <!-- STATUS -->
-        <div class="status-grid">
-
-            <!-- TANK -->
-            <div class="status-card">
-
-                <div class="status-title">
-                    TANK STATUS
-                </div>
-
-                <div class="status-content">
-
-                    <div class="status-icon">
-                        💧
-                    </div>
-
-                    <div>
-                        <div class="status-text">
-                            <span class="status-dot green"></span>
-                            FULL
-                        </div>
-
-                        <div class="status-small">
-                            Normal
-                        </div>
-                    </div>
+                    0.00 cm
 
                 </div>
 
             </div>
 
 
-            <!-- PUMP -->
-            <div class="status-card">
+            <div class="tank-container">
 
-                <div class="status-title">
-                    PUMP STATUS
-                </div>
+                <div class="tank">
 
-                <div class="status-content">
-
-                    <div class="status-icon">
-                        ⚙️
+                    <div
+                        class="tank-water"
+                        id="tankWater">
                     </div>
 
-                    <div>
-                        <div
-                            class="status-text"
-                            id="pumpStatus">
-                            <span class="status-dot green"></span>
-                            ON
-                        </div>
+                    <div class="tank-stand"></div>
 
-                        <div class="status-small">
-                            Running
-                        </div>
-                    </div>
+                    <div class="tank-stand right"></div>
+
+                    <div class="tank-base"></div>
 
                 </div>
 
             </div>
 
+        </div>
 
-            <!-- LED -->
-            <div class="status-card">
+    </section>
 
-                <div class="status-title">
-                    LED STATUS
-                </div>
 
-                <div class="status-content">
+    <!-- STATUS -->
 
-                    <div class="status-icon">
-                        💡
-                    </div>
+    <div class="status-grid">
 
-                    <div>
-                        <div class="status-text">
-                            <span class="status-dot green"></span>
-                            ON
-                        </div>
+        <!-- TANK STATUS -->
 
-                        <div class="status-small">
-                            Active
-                        </div>
-                    </div>
+        <div class="status-card">
 
-                </div>
-
+            <div class="status-title">
+                TANK STATUS
             </div>
 
+            <div class="status-content">
 
-            <!-- BUZZER -->
-            <div class="status-card">
-
-                <div class="status-title">
-                    BUZZER STATUS
+                <div class="status-icon">
+                    💧
                 </div>
 
-                <div class="status-content">
+                <div>
 
-                    <div class="status-icon">
-                        🔔
+                    <div
+                        class="status-text"
+                        id="tankStatus">
+
+                        <span class="status-dot red"></span>
+                        LOW
+
                     </div>
 
-                    <div>
-                        <div class="status-text">
-                            <span class="status-dot red"></span>
-                            OFF
-                        </div>
+                    <div
+                        class="status-small"
+                        id="tankStatusSmall">
 
-                        <div class="status-small">
-                            Inactive
-                        </div>
+                        Waiting for sensor
+
                     </div>
 
                 </div>
@@ -577,76 +556,590 @@ button:active {
         </div>
 
 
-        <!-- MANUAL CONTROL -->
-        <div class="control-title">
-            MANUAL PUMP CONTROL
+        <!-- PUMP STATUS -->
+
+        <div class="status-card">
+
+            <div class="status-title">
+                PUMP STATUS
+            </div>
+
+            <div class="status-content">
+
+                <div class="status-icon">
+                    ⚙️
+                </div>
+
+                <div>
+
+                    <div
+                        class="status-text"
+                        id="pumpStatus">
+
+                        <span class="status-dot red"></span>
+                        OFF
+
+                    </div>
+
+                    <div class="status-small">
+                        Manual control
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="buttons">
 
-            <button
-                class="pump-on"
-                onclick="pumpOn()">
-                ⏻ &nbsp; PUMP ON
-            </button>
+        <!-- LED -->
 
-            <button
-                class="pump-off"
-                onclick="pumpOff()">
-                ⏻ &nbsp; PUMP OFF
-            </button>
+        <div class="status-card">
+
+            <div class="status-title">
+                LED STATUS
+            </div>
+
+            <div class="status-content">
+
+                <div class="status-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <div
+                        class="status-text"
+                        id="ledStatus">
+
+                        <span class="status-dot red"></span>
+                        OFF
+
+                    </div>
+
+                    <div
+                        class="status-small"
+                        id="ledStatusSmall">
+
+                        Based on tank level
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
-    </main>
 
+        <!-- BUZZER -->
 
-    <!-- BOTTOM NAV -->
-    <nav class="bottom-nav">
+        <div class="status-card">
 
-        <div class="nav-item active">
-            <span class="nav-icon">⌂</span>
-            Dashboard
+            <div class="status-title">
+                BUZZER STATUS
+            </div>
+
+            <div class="status-content">
+
+                <div class="status-icon">
+                    🔔
+                </div>
+
+                <div>
+
+                    <div
+                        class="status-text"
+                        id="buzzerStatus">
+
+                        <span class="status-dot red"></span>
+                        OFF
+
+                    </div>
+
+                    <div
+                        class="status-small">
+
+                        Inactive
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="nav-item">
-            <span class="nav-icon">↶</span>
-            History
-        </div>
+    </div>
 
-        <div class="nav-item">
-            <span class="nav-icon">◯</span>
-            Control
-        </div>
 
-        <div class="nav-item">
-            <span class="nav-icon">⚙</span>
-            Settings
-        </div>
+    <!-- MANUAL CONTROL -->
 
-    </nav>
+    <div class="control-title">
+        MANUAL PUMP CONTROL
+    </div>
+
+    <div class="buttons">
+
+        <button
+            class="pump-on"
+            onclick="pumpOn()">
+
+            ⏻ &nbsp; PUMP ON
+
+        </button>
+
+        <button
+            class="pump-off"
+            onclick="pumpOff()">
+
+            ⏻ &nbsp; PUMP OFF
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+    <div class="nav-item active">
+
+        <span class="nav-icon">
+            ⌂
+        </span>
+
+        Dashboard
+
+    </div>
+
+    <div class="nav-item">
+
+        <span class="nav-icon">
+            ↶
+        </span>
+
+        History
+
+    </div>
+
+    <div class="nav-item">
+
+        <span class="nav-icon">
+            ◯
+        </span>
+
+        Control
+
+    </div>
+
+    <div class="nav-item">
+
+        <span class="nav-icon">
+            ⚙
+        </span>
+
+        Settings
+
+    </div>
+
+</nav>
+```
 
 </div>
 
+<!-- ===================================================== -->
+
+<!-- FIREBASE -->
+
+<!-- ===================================================== -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    onValue
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+
+/* ======================================================
+   FIREBASE CONFIG
+   ====================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyBu2sB-qRxXvGA1Te_qynrKGj1KX-UDUaQ",
+
+    authDomain:
+        "water-tank-monitoring-a4be2.firebaseapp.com",
+
+    databaseURL:
+        "https://water-tank-monitoring-a4be2-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId:
+        "water-tank-monitoring-a4be2",
+
+    storageBucket:
+        "water-tank-monitoring-a4be2.firebasestorage.app",
+
+    messagingSenderId:
+        "112963802987",
+
+    appId:
+        "1:112963802987:web:3d905732bc372fae22de2e"
+
+};
+
+
+/* ======================================================
+   INITIALIZE FIREBASE
+   ====================================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const database = getDatabase(app);
+
+
+/* ======================================================
+   WATER TANK DATA
+   ====================================================== */
+
+const waterTankRef =
+    ref(database, "waterTank");
+
+
+/* ======================================================
+   REAL-TIME FIREBASE LISTENER
+   ====================================================== */
+
+onValue(
+
+    waterTankRef,
+
+    (snapshot) => {
+
+        const data = snapshot.val();
+
+        if (!data) {
+
+            console.log(
+                "No water tank data found."
+            );
+
+            return;
+        }
+
+
+        /* DISTANCE */
+
+        const distance =
+            Number(data.distance) || 0;
+
+
+        /* PERCENTAGE */
+
+        let percentage =
+            Number(data.percentage) || 0;
+
+
+        percentage =
+            Math.round(percentage);
+
+
+        percentage =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    percentage
+                )
+            );
+
+
+        /* STATUS */
+
+        let status =
+            String(data.status || "LOW")
+            .toUpperCase();
+
+
+        /* UPDATE DASHBOARD */
+
+        updateWaterLevel(
+            percentage,
+            distance
+        );
+
+
+        updateTankStatus(
+            status
+        );
+
+
+        updateLED(
+            percentage
+        );
+
+
+        updateBuzzer(
+            percentage
+        );
+
+
+        console.log(
+            "Firebase Data:",
+            data
+        );
+
+    },
+
+    (error) => {
+
+        console.error(
+            "Firebase connection error:",
+            error
+        );
+
+        document.getElementById(
+            "tankStatus"
+        ).innerHTML =
+            '<span class="status-dot red"></span> ERROR';
+
+        document.getElementById(
+            "tankStatusSmall"
+        ).textContent =
+            "Firebase connection failed";
+
+    }
+
+);
+
+
+/* ======================================================
+   UPDATE WATER LEVEL
+   ====================================================== */
+
+function updateWaterLevel(
+    percentage,
+    distance
+) {
+
+    /* NUMBER */
+
+    document.getElementById(
+        "levelNumber"
+    ).textContent =
+        percentage + "%";
+
+
+    /* DISTANCE */
+
+    document.getElementById(
+        "distanceValue"
+    ).textContent =
+        distance.toFixed(2) + " cm";
+
+
+    /* CIRCLE */
+
+    const degrees =
+        percentage * 3.6;
+
+
+    document.getElementById(
+        "levelCircle"
+    ).style.background =
+        `conic-gradient(
+            #1250d5 0deg ${degrees}deg,
+            #dce5ed ${degrees}deg 360deg
+        )`;
+
+
+    /* TANK */
+
+    document.getElementById(
+        "tankWater"
+    ).style.height =
+        percentage + "%";
+
+}
+
+
+/* ======================================================
+   UPDATE TANK STATUS
+   ====================================================== */
+
+function updateTankStatus(
+    status
+) {
+
+    const element =
+        document.getElementById(
+            "tankStatus"
+        );
+
+    const small =
+        document.getElementById(
+            "tankStatusSmall"
+        );
+
+
+    if (status === "FULL") {
+
+        element.innerHTML =
+            '<span class="status-dot green"></span> FULL';
+
+        small.textContent =
+            "Normal";
+
+    }
+
+    else if (status === "MEDIUM") {
+
+        element.innerHTML =
+            '<span class="status-dot yellow"></span> MEDIUM';
+
+        small.textContent =
+            "Water level moderate";
+
+    }
+
+    else {
+
+        element.innerHTML =
+            '<span class="status-dot red"></span> LOW';
+
+        small.textContent =
+            "Water level low";
+
+    }
+
+}
+
+
+/* ======================================================
+   LED STATUS
+   ====================================================== */
+
+function updateLED(
+    percentage
+) {
+
+    const led =
+        document.getElementById(
+            "ledStatus"
+        );
+
+    const small =
+        document.getElementById(
+            "ledStatusSmall"
+        );
+
+
+    if (percentage >= 80) {
+
+        led.innerHTML =
+            '<span class="status-dot green"></span> GREEN';
+
+        small.textContent =
+            "FULL level";
+
+    }
+
+    else if (percentage >= 40) {
+
+        led.innerHTML =
+            '<span class="status-dot yellow"></span> YELLOW';
+
+        small.textContent =
+            "MEDIUM level";
+
+    }
+
+    else {
+
+        led.innerHTML =
+            '<span class="status-dot red"></span> RED';
+
+        small.textContent =
+            "LOW level";
+
+    }
+
+}
+
+
+/* ======================================================
+   BUZZER STATUS
+   ====================================================== */
+
+function updateBuzzer(
+    percentage
+) {
+
+    const buzzer =
+        document.getElementById(
+            "buzzerStatus"
+        );
+
+
+    if (percentage < 40) {
+
+        buzzer.innerHTML =
+            '<span class="status-dot red"></span> ON';
+
+    }
+
+    else {
+
+        buzzer.innerHTML =
+            '<span class="status-dot green"></span> OFF';
+
+    }
+
+}
+
+</script>
+
+<!-- ===================================================== -->
+
+<!-- PUMP BUTTONS - TEMPORARY DISPLAY ONLY -->
+
+<!-- ===================================================== -->
 
 <script>
 
-let pump = true;
+let pump = false;
+
 
 function pumpOn() {
 
     pump = true;
 
-    document.getElementById("pumpStatus").innerHTML =
+    document.getElementById(
+        "pumpStatus"
+    ).innerHTML =
         '<span class="status-dot green"></span> ON';
 
 }
+
 
 function pumpOff() {
 
     pump = false;
 
-    document.getElementById("pumpStatus").innerHTML =
+    document.getElementById(
+        "pumpStatus"
+    ).innerHTML =
         '<span class="status-dot red"></span> OFF';
 
 }

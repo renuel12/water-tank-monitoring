@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>Smart Water Monitoring</title>
 
@@ -68,15 +70,11 @@ body {
     padding: 18px 15px 110px;
 }
 
-.water-card,
-.status-card {
+.water-card {
     background: white;
     border-radius: 17px;
-    box-shadow: 0 5px 18px rgba(27, 63, 120, .08);
-}
-
-.water-card {
     padding: 17px 13px;
+    box-shadow: 0 5px 18px rgba(27, 63, 120, .08);
 }
 
 .water-title {
@@ -171,6 +169,20 @@ body {
         rgba(220,235,255,.5),
         rgba(255,255,255,.7)
     );
+
+    box-shadow: inset 4px 0 10px rgba(255,255,255,.8);
+}
+
+.tank::before {
+    content: "";
+    position: absolute;
+    width: 67px;
+    height: 12px;
+    border: 3px solid #7e93ae;
+    border-radius: 50%;
+    top: -8px;
+    left: 4px;
+    background: rgba(255,255,255,.5);
 }
 
 .tank-water {
@@ -232,9 +244,11 @@ body {
 }
 
 .status-card {
+    background: white;
+    border-radius: 13px;
     min-height: 92px;
     padding: 12px;
-    border-radius: 13px;
+    box-shadow: 0 3px 12px rgba(27, 63, 120, .07);
 }
 
 .status-title {
@@ -308,6 +322,11 @@ button {
     font-size: 10px;
     font-weight: 700;
     cursor: pointer;
+    transition: .15s;
+}
+
+button:active {
+    transform: scale(.96);
 }
 
 .pump-on {
@@ -320,11 +339,6 @@ button {
 
 .pump-auto {
     background: #2867d8;
-}
-
-button:disabled {
-    opacity: .55;
-    cursor: not-allowed;
 }
 
 .command-status {
@@ -389,7 +403,9 @@ Real-Time Water Tank Monitoring
 
 </header>
 
+
 <main class="content">
+
 
 <section class="water-card">
 
@@ -397,7 +413,9 @@ Real-Time Water Tank Monitoring
 WATER LEVEL
 </div>
 
+
 <div class="water-main">
+
 
 <div class="level-container">
 
@@ -405,7 +423,9 @@ WATER LEVEL
 
 <div class="level-text">
 
-<span class="level-number" id="levelNumber">
+<span
+class="level-number"
+id="levelNumber">
 0%
 </span>
 
@@ -417,17 +437,24 @@ Water Level
 
 </div>
 
-<div class="level-value" id="distanceValue">
+
+<div
+class="level-value"
+id="distanceValue">
 0.0 cm
 </div>
 
 </div>
 
+
 <div class="tank-container">
 
 <div class="tank">
 
-<div class="tank-water" id="tankWater"></div>
+<div
+class="tank-water"
+id="tankWater">
+</div>
 
 <div class="tank-stand"></div>
 
@@ -439,11 +466,16 @@ Water Level
 
 </div>
 
+
 </div>
 
 </section>
 
+
 <div class="status-grid">
+
+
+<!-- TANK STATUS -->
 
 <div class="status-card">
 
@@ -459,20 +491,31 @@ TANK STATUS
 
 <div>
 
-<div class="status-text" id="tankStatus">
+<div
+class="status-text"
+id="tankStatus">
+
 <span class="status-dot red"></span>
 LOW
+
 </div>
 
-<div class="status-small" id="tankStatusSmall">
+<div
+class="status-small"
+id="tankStatusSmall">
+
 Waiting for data
-</div>
 
 </div>
 
 </div>
 
 </div>
+
+</div>
+
+
+<!-- PUMP STATUS -->
 
 <div class="status-card">
 
@@ -488,20 +531,31 @@ PUMP STATUS
 
 <div>
 
-<div class="status-text" id="pumpStatus">
+<div
+class="status-text"
+id="pumpStatus">
+
 <span class="status-dot red"></span>
 OFF
+
 </div>
 
-<div class="status-small" id="pumpStatusSmall">
+<div
+class="status-small"
+id="pumpStatusSmall">
+
 Stopped
-</div>
 
 </div>
 
 </div>
 
 </div>
+
+</div>
+
+
+<!-- LED STATUS -->
 
 <div class="status-card">
 
@@ -517,20 +571,31 @@ LED STATUS
 
 <div>
 
-<div class="status-text" id="ledStatus">
+<div
+class="status-text"
+id="ledStatus">
+
 <span class="status-dot red"></span>
 OFF
+
 </div>
 
-<div class="status-small" id="ledStatusSmall">
+<div
+class="status-small"
+id="ledStatusSmall">
+
 Inactive
-</div>
 
 </div>
 
 </div>
 
 </div>
+
+</div>
+
+
+<!-- BUZZER STATUS -->
 
 <div class="status-card">
 
@@ -546,14 +611,20 @@ BUZZER STATUS
 
 <div>
 
-<div class="status-text" id="buzzerStatus">
+<div
+class="status-text"
+id="buzzerStatus">
+
 <span class="status-dot red"></span>
 OFF
+
 </div>
 
-<div class="status-small" id="buzzerStatusSmall">
+<div
+class="status-small"
+id="buzzerStatusSmall">
+
 Inactive
-</div>
 
 </div>
 
@@ -562,40 +633,52 @@ Inactive
 </div>
 
 </div>
+
+
+</div>
+
+
+<!-- PUMP CONTROL -->
 
 <div class="control-title">
 PUMP CONTROL
 </div>
 
+
 <div class="buttons">
 
 <button
 class="pump-on"
-id="pumpOnButton"
-onclick="pumpOn()">
-⏻ PUMP ON </button>
+id="pumpOnButton">
+⏻ PUMP ON
+</button>
 
 <button
 class="pump-off"
-id="pumpOffButton"
-onclick="pumpOff()">
-⏻ PUMP OFF </button>
+id="pumpOffButton">
+⏻ PUMP OFF
+</button>
 
 <button
 class="pump-auto"
-id="pumpAutoButton"
-onclick="pumpAuto()">
-AUTO </button>
+id="pumpAutoButton">
+AUTO
+</button>
 
 </div>
+
 
 <div
 class="command-status"
 id="commandStatus">
-Firebase connecting...
+
+Current mode: AUTO
+
 </div>
 
+
 </main>
+
 
 <nav class="bottom-nav">
 
@@ -609,6 +692,7 @@ Dashboard
 
 </div>
 
+
 <div class="nav-item">
 
 <span class="nav-icon">
@@ -619,6 +703,7 @@ History
 
 </div>
 
+
 <div class="nav-item">
 
 <span class="nav-icon">
@@ -628,6 +713,7 @@ History
 Control
 
 </div>
+
 
 <div class="nav-item">
 
@@ -641,18 +727,22 @@ Settings
 
 </nav>
 
+
 </div>
+
 
 <script type="module">
 
+
 /************************************************
- * FIREBASE
+ * FIREBASE IMPORT
  ************************************************/
 
 import {
     initializeApp
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 
 import {
     getDatabase,
@@ -692,20 +782,23 @@ const firebaseConfig = {
 
     measurementId:
         "G-BV6BNXD4FF"
+
 };
 
 
 /************************************************
- * INITIALIZE
+ * INITIALIZE FIREBASE
  ************************************************/
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const database = getDatabase(app);
+const database =
+    getDatabase(app);
 
 
 /************************************************
- * REFERENCES
+ * FIREBASE REFERENCES
  ************************************************/
 
 const waterTankRef =
@@ -716,41 +809,156 @@ const commandRef =
 
 
 /************************************************
- * FIREBASE REAL-TIME LISTENER
+ * BUTTON REFERENCES
+ ************************************************/
+
+const pumpOnButton =
+    document.getElementById(
+        "pumpOnButton"
+    );
+
+const pumpOffButton =
+    document.getElementById(
+        "pumpOffButton"
+    );
+
+const pumpAutoButton =
+    document.getElementById(
+        "pumpAutoButton"
+    );
+
+
+/************************************************
+ * SEND COMMAND
+ ************************************************/
+
+async function sendPumpCommand(command)
+{
+    const commandStatus =
+        document.getElementById(
+            "commandStatus"
+        );
+
+    console.log(
+        "Sending pump command:",
+        command
+    );
+
+    commandStatus.textContent =
+        "Sending " + command + "...";
+
+
+    try
+    {
+        await set(
+            commandRef,
+            command
+        );
+
+        console.log(
+            "SUCCESS:",
+            command
+        );
+
+        commandStatus.textContent =
+            "Command sent: " + command;
+
+    }
+
+    catch(error)
+    {
+        console.error(
+            "Firebase command error:",
+            error
+        );
+
+        commandStatus.textContent =
+            "ERROR: " + error.message;
+
+        alert(
+            "Firebase error:\n" +
+            error.message
+        );
+    }
+}
+
+
+/************************************************
+ * BUTTON EVENTS
+ ************************************************/
+
+pumpOnButton.addEventListener(
+    "click",
+    function()
+    {
+        sendPumpCommand("ON");
+    }
+);
+
+
+pumpOffButton.addEventListener(
+    "click",
+    function()
+    {
+        sendPumpCommand("OFF");
+    }
+);
+
+
+pumpAutoButton.addEventListener(
+    "click",
+    function()
+    {
+        sendPumpCommand("AUTO");
+    }
+);
+
+
+/************************************************
+ * FIREBASE REAL-TIME DATA
  ************************************************/
 
 onValue(
+
     waterTankRef,
 
-    (snapshot) => {
+    (snapshot) =>
+    {
 
-        const data = snapshot.val();
+        const data =
+            snapshot.val();
 
-        console.log("Firebase data:", data);
 
-        if (!data) {
-
-            document.getElementById(
-                "commandStatus"
-            ).textContent =
-                "No Firebase data";
+        if(!data)
+        {
+            console.log(
+                "No water tank data."
+            );
 
             return;
         }
 
+
+        /****************************************
+         * DATA
+         ****************************************/
 
         const percentage =
             Math.max(
                 0,
                 Math.min(
                     100,
-                    Number(data.percentage || 0)
+                    Number(
+                        data.percentage ?? 0
+                    )
                 )
             );
 
 
         const distance =
-            Number(data.distance || 0);
+            Number(
+                data.distance ?? 0
+            );
 
 
         const status =
@@ -771,6 +979,12 @@ onValue(
             ).toUpperCase();
 
 
+        console.log(
+            "Firebase data:",
+            data
+        );
+
+
         /****************************************
          * WATER LEVEL
          ****************************************/
@@ -781,10 +995,15 @@ onValue(
             percentage + "%";
 
 
+        /****************************************
+         * DISTANCE
+         ****************************************/
+
         document.getElementById(
             "distanceValue"
         ).textContent =
-            distance.toFixed(1) + " cm";
+            distance.toFixed(1) +
+            " cm";
 
 
         /****************************************
@@ -794,9 +1013,11 @@ onValue(
         const degrees =
             percentage * 3.6;
 
+
         document.getElementById(
             "levelCircle"
         ).style.background =
+
             `conic-gradient(
                 #1250d5 0deg ${degrees}deg,
                 #dce5ed ${degrees}deg 360deg
@@ -822,34 +1043,33 @@ onValue(
                 "tankStatus"
             );
 
+
         const tankStatusSmall =
             document.getElementById(
                 "tankStatusSmall"
             );
 
 
-        if (status === "FULL") {
-
+        if(status === "FULL")
+        {
             tankStatus.innerHTML =
                 '<span class="status-dot green"></span> FULL';
 
             tankStatusSmall.textContent =
                 "Tank is full";
-
         }
 
-        else if (status === "MEDIUM") {
-
+        else if(status === "MEDIUM")
+        {
             tankStatus.innerHTML =
                 '<span class="status-dot yellow"></span> MEDIUM';
 
             tankStatusSmall.textContent =
                 "Normal";
-
         }
 
-        else {
-
+        else
+        {
             tankStatus.innerHTML =
                 '<span class="status-dot red"></span> LOW';
 
@@ -859,7 +1079,9 @@ onValue(
 
 
         /****************************************
-         * ACTUAL PUMP
+         * PUMP STATUS
+         *
+         * ACTUAL ESP32 PUMP STATE
          ****************************************/
 
         const pumpStatus =
@@ -867,24 +1089,24 @@ onValue(
                 "pumpStatus"
             );
 
+
         const pumpStatusSmall =
             document.getElementById(
                 "pumpStatusSmall"
             );
 
 
-        if (pump === "ON") {
-
+        if(pump === "ON")
+        {
             pumpStatus.innerHTML =
                 '<span class="status-dot green"></span> ON';
 
             pumpStatusSmall.textContent =
                 "Running";
-
         }
 
-        else {
-
+        else
+        {
             pumpStatus.innerHTML =
                 '<span class="status-dot red"></span> OFF';
 
@@ -894,7 +1116,7 @@ onValue(
 
 
         /****************************************
-         * LED
+         * LED STATUS
          ****************************************/
 
         const ledStatus =
@@ -902,34 +1124,33 @@ onValue(
                 "ledStatus"
             );
 
+
         const ledStatusSmall =
             document.getElementById(
                 "ledStatusSmall"
             );
 
 
-        if (status === "LOW") {
-
+        if(status === "LOW")
+        {
             ledStatus.innerHTML =
                 '<span class="status-dot red"></span> ON';
 
             ledStatusSmall.textContent =
                 "LOW indicator";
-
         }
 
-        else if (status === "MEDIUM") {
-
+        else if(status === "MEDIUM")
+        {
             ledStatus.innerHTML =
                 '<span class="status-dot yellow"></span> ON';
 
             ledStatusSmall.textContent =
                 "MEDIUM indicator";
-
         }
 
-        else {
-
+        else
+        {
             ledStatus.innerHTML =
                 '<span class="status-dot green"></span> ON';
 
@@ -947,24 +1168,24 @@ onValue(
                 "buzzerStatus"
             );
 
+
         const buzzerStatusSmall =
             document.getElementById(
                 "buzzerStatusSmall"
             );
 
 
-        if (status === "LOW") {
-
+        if(status === "LOW")
+        {
             buzzerStatus.innerHTML =
                 '<span class="status-dot green"></span> ON';
 
             buzzerStatusSmall.textContent =
                 "Low-level warning";
-
         }
 
-        else {
-
+        else
+        {
             buzzerStatus.innerHTML =
                 '<span class="status-dot red"></span> OFF';
 
@@ -974,7 +1195,7 @@ onValue(
 
 
         /****************************************
-         * MODE
+         * COMMAND / MODE
          ****************************************/
 
         document.getElementById(
@@ -982,161 +1203,30 @@ onValue(
         ).textContent =
             "Current mode: " + command;
 
-
-        /****************************************
-         * BUTTONS
-         ****************************************/
-
-        updateButtons(command);
-
     },
 
-    (error) => {
+
+    (error) =>
+    {
 
         console.error(
-            "Firebase error:",
+            "Firebase listener error:",
             error
         );
+
 
         document.getElementById(
             "commandStatus"
         ).textContent =
-            "Firebase error: " + error.message;
+            "Firebase connection error";
+
     }
+
 );
 
-
-/************************************************
- * BUTTON STATE
- ************************************************/
-
-function updateButtons(command) {
-
-    document.getElementById(
-        "pumpOnButton"
-    ).disabled =
-        command === "ON";
-
-
-    document.getElementById(
-        "pumpOffButton"
-    ).disabled =
-        command === "OFF";
-
-
-    document.getElementById(
-        "pumpAutoButton"
-    ).disabled =
-        command === "AUTO";
-}
-
-
-/************************************************
- * SEND COMMAND
- ************************************************/
-
-async function sendPumpCommand(command) {
-
-    console.log(
-        "Sending command:",
-        command
-    );
-
-
-    const status =
-        document.getElementById(
-            "commandStatus"
-        );
-
-
-    status.textContent =
-        "Sending " + command + "...";
-
-
-    try {
-
-        await set(
-            commandRef,
-            command
-        );
-
-
-        console.log(
-            "Command successfully written:",
-            command
-        );
-
-
-        status.textContent =
-            "Command sent: " + command;
-
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "WRITE ERROR:",
-            error
-        );
-
-
-        status.textContent =
-            "Firebase write error";
-
-
-        alert(
-            "Firebase error:\n\n" +
-            error.message
-        );
-    }
-}
-
-
-/************************************************
- * PUMP ON
- ************************************************/
-
-window.pumpOn = function() {
-
-    console.log("PUMP ON clicked");
-
-    sendPumpCommand("ON");
-
-};
-
-
-/************************************************
- * PUMP OFF
- ************************************************/
-
-window.pumpOff = function() {
-
-    console.log("PUMP OFF clicked");
-
-    sendPumpCommand("OFF");
-
-};
-
-
-/************************************************
- * AUTO
- ************************************************/
-
-window.pumpAuto = function() {
-
-    console.log("AUTO clicked");
-
-    sendPumpCommand("AUTO");
-
-};
-
-
-console.log(
-    "SMART WATER MONITORING WEBSITE READY"
-);
 
 </script>
 
 </body>
+
 </html>

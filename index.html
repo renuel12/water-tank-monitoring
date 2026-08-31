@@ -410,7 +410,6 @@ button:disabled {
 
 <header class="header">
 
-```
 <div class="bell">♧</div>
 
 <h1>
@@ -421,7 +420,7 @@ button:disabled {
 <p>
     Real-Time Water Tank Monitoring
 </p>
-```
+
 
 </header>
 
@@ -429,7 +428,7 @@ button:disabled {
 
 <section class="water-card">
 
-```
+
 <div class="water-title">
     WATER LEVEL
 </div>
@@ -485,7 +484,7 @@ button:disabled {
     </div>
 
 </div>
-```
+
 
 </section>
 
@@ -528,7 +527,7 @@ button:disabled {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -536,7 +535,7 @@ button:disabled {
 
 <div class="status-card">
 
-```
+
 <div class="status-title">
     PUMP STATUS
 </div>
@@ -569,7 +568,7 @@ button:disabled {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -577,7 +576,7 @@ button:disabled {
 
 <div class="status-card">
 
-```
+
 <div class="status-title">
     LED STATUS
 </div>
@@ -610,7 +609,7 @@ button:disabled {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -651,7 +650,7 @@ button:disabled {
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -665,7 +664,7 @@ button:disabled {
 
 <div class="buttons">
 
-```
+
 <button
     class="pump-on"
     id="pumpOnButton"
@@ -743,17 +742,14 @@ button:disabled {
     Settings
 
 </div>
-```
+
 
 </nav>
 
 </div>
 
+```html
 <script type="module">
-
-/************************************************
- * FIREBASE IMPORT
- ************************************************/
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -796,12 +792,11 @@ const firebaseConfig = {
 
     measurementId:
         "G-BV6BNXD4FF"
-
 };
 
 
 /************************************************
- * INITIALIZE
+ * INITIALIZE FIREBASE
  ************************************************/
 
 const app =
@@ -812,7 +807,7 @@ const database =
 
 
 /************************************************
- * FIREBASE REFERENCES
+ * REFERENCES
  ************************************************/
 
 const waterTankRef =
@@ -823,7 +818,7 @@ const commandRef =
 
 
 /************************************************
- * REAL-TIME WATER TANK DATA
+ * REAL-TIME DATA
  ************************************************/
 
 onValue(
@@ -834,17 +829,13 @@ onValue(
             snapshot.val();
 
         if (!data) {
-
-            console.log(
-                "No water tank data."
-            );
-
+            console.log("No water tank data.");
             return;
         }
 
 
         /****************************************
-         * VALUES FROM ESP32
+         * DATA
          ****************************************/
 
         const percentage =
@@ -860,20 +851,23 @@ onValue(
             Number(data.distance ?? 0);
 
         const status =
-            String(data.status || "LOW")
-            .toUpperCase();
+            String(
+                data.status || "LOW"
+            ).toUpperCase();
 
         const pump =
-            String(data.pump || "OFF")
-            .toUpperCase();
+            String(
+                data.pump || "OFF"
+            ).toUpperCase();
 
         const command =
-            String(data.pumpCommand || "AUTO")
-            .toUpperCase();
+            String(
+                data.pumpCommand || "AUTO"
+            ).toUpperCase();
 
 
         /****************************************
-         * WATER PERCENTAGE
+         * WATER LEVEL
          ****************************************/
 
         document.getElementById(
@@ -910,7 +904,7 @@ onValue(
 
 
         /****************************************
-         * TANK WATER
+         * TANK
          ****************************************/
 
         document.getElementById(
@@ -961,20 +955,11 @@ onValue(
 
             tankStatusSmall.textContent =
                 "Low water level";
-
         }
 
 
         /****************************************
-         * PUMP STATUS
-         *
-         * IMPORTANT:
-         *
-         * This comes from:
-         *
-         * waterTank/pump
-         *
-         * NOT from the button.
+         * ACTUAL PUMP STATUS
          ****************************************/
 
         const pumpStatus =
@@ -1005,16 +990,11 @@ onValue(
 
             pumpStatusSmall.textContent =
                 "Stopped";
-
         }
 
 
         /****************************************
          * LED STATUS
-         *
-         * LOW    = RED
-         * MEDIUM = YELLOW
-         * FULL   = GREEN
          ****************************************/
 
         const ledStatus =
@@ -1035,7 +1015,6 @@ onValue(
 
             ledStatusSmall.textContent =
                 "LOW indicator";
-
         }
 
         else if (status === "MEDIUM") {
@@ -1045,7 +1024,6 @@ onValue(
 
             ledStatusSmall.textContent =
                 "MEDIUM indicator";
-
         }
 
         else {
@@ -1055,15 +1033,11 @@ onValue(
 
             ledStatusSmall.textContent =
                 "FULL indicator";
-
         }
 
 
         /****************************************
          * BUZZER
-         *
-         * LOW = ON
-         * OTHER = OFF
          ****************************************/
 
         const buzzerStatus =
@@ -1084,7 +1058,6 @@ onValue(
 
             buzzerStatusSmall.textContent =
                 "Low-level warning";
-
         }
 
         else {
@@ -1094,12 +1067,11 @@ onValue(
 
             buzzerStatusSmall.textContent =
                 "Inactive";
-
         }
 
 
         /****************************************
-         * CURRENT COMMAND
+         * CURRENT MODE
          ****************************************/
 
         document.getElementById(
@@ -1130,14 +1102,12 @@ onValue(
             "commandStatus"
         ).textContent =
             "Firebase connection error";
-
     }
-
 );
 
 
 /************************************************
- * UPDATE BUTTONS
+ * BUTTON STATE
  ************************************************/
 
 function updateButtons(
@@ -1171,11 +1141,9 @@ function updateButtons(
         command === "AUTO";
 
 
-    /*
-     * If tank is already 100%,
-     * ON button is disabled because
-     * ESP32 will force the pump OFF.
-     */
+    /****************************************
+     * FULL TANK
+     ****************************************/
 
     if (percentage >= 100) {
 
@@ -1185,9 +1153,7 @@ function updateButtons(
             "commandStatus"
         ).textContent =
             "Tank FULL - Pump locked OFF";
-
     }
-
 }
 
 
@@ -1214,11 +1180,23 @@ async function sendPumpCommand(command) {
             command
         );
 
+
+        /*
+         * Do NOT directly change pump status here.
+         *
+         * ESP32 will decide whether the actual
+         * pump is ON or OFF.
+         *
+         * Firebase listener will then update
+         * the website automatically.
+         */
+
         commandStatus.textContent =
             "Command sent: " + command;
 
+
         console.log(
-            "Firebase pump command:",
+            "Pump command sent:",
             command
         );
 
@@ -1237,9 +1215,7 @@ async function sendPumpCommand(command) {
         alert(
             "Failed to communicate with Firebase."
         );
-
     }
-
 }
 
 
@@ -1279,6 +1255,7 @@ function() {
 };
 
 </script>
+
 
 </body>
 
